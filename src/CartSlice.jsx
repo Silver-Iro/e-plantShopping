@@ -7,7 +7,6 @@ export const CartSlice = createSlice({
   },
   reducers: {
     addItem: (state, action) => {
-        console.log(action.payload)
         const {name, image, cost} = action.payload;
 
         const existingItem = state.items.find(item=>item.name === name);
@@ -22,9 +21,9 @@ export const CartSlice = createSlice({
         // check if item exists
         const existingItem = state.items.find(item=>item.name === name);
         if (existingItem) {
-            state.items = state.items.filter(item=> item.name !== name)
+            state.items = state.items.filter(item=> item.name !== name);
         } else {
-            return false
+            return false;
         }
 
     },
@@ -33,11 +32,11 @@ export const CartSlice = createSlice({
         const existingItem = state.items.find(item=>item.name === name);
         if (existingItem) {
             existingItem.quantity = quantity;
-        } else {
-            state.items.push({name, image, cost, quantity});
+        }
+        if (existingItem.quantity <=0){
+            state.items = state.items.filter(item=> item.name !== name);
         }
 
-    
     },
   },
 });
