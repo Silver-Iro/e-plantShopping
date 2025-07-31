@@ -188,6 +188,11 @@ body {
 
     
 }
+
+.cart-total{
+    color: white;
+    text-decoration: none;
+}
 /* Add Media Query for responsiveness */
 @media (max-width: 768px) {
     .product-card {
